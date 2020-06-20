@@ -39,11 +39,11 @@ import random
 
 """# Constants"""
 
-PRODUCTION_MODE = False
+PRODUCTION_MODE = True
 
 SEED = 0
 TRAINING_BATCH_SIZE = 7
-TRAINING_EPOCHS = 5
+TRAINING_EPOCHS = 100
 
 LEARNING_RATE = 0.0001
 WEIGHT_DECAY = 0
@@ -274,48 +274,48 @@ class Decoder(nn.Module):
   def __init__(self):
     super().__init__()
 
-    self.sequential = nn.Sequential(
-        nn.Conv2d(in_channels=512, out_channels=512, kernel_size=3, padding=1), nn.ReLU(), nn.Dropout2d(),
-        nn.Upsample(scale_factor=2, mode='bilinear', align_corners=False),
-
-        nn.Conv2d(in_channels=512, out_channels=256, kernel_size=3, padding=1), nn.ReLU(), nn.Dropout2d(),
-        nn.Upsample(scale_factor=2, mode='bilinear', align_corners=False),
-
-        nn.Conv2d(in_channels=256, out_channels=128, kernel_size=3, padding=1), nn.ReLU(), nn.Dropout2d(),
-        nn.Upsample(scale_factor=2, mode='bilinear', align_corners=False),
-
-        nn.Conv2d(in_channels=128, out_channels=64, kernel_size=3, padding=1), nn.ReLU(), nn.Dropout2d(),
-        nn.Upsample(scale_factor=2, mode='bilinear', align_corners=False),
-
-        nn.Conv2d(in_channels=64, out_channels=64, kernel_size=3, padding=1), nn.ReLU(), nn.Dropout2d(),
-        nn.Conv2d(in_channels=64, out_channels=1, kernel_size=1, padding=0),
-    )
-  
     # self.sequential = nn.Sequential(
-    #     nn.Conv2d(in_channels=512, out_channels=512, kernel_size=3, padding=1), nn.ReLU(), nn.Dropout2d(),
-    #     nn.Conv2d(in_channels=512, out_channels=512, kernel_size=3, padding=1), nn.ReLU(), nn.Dropout2d(),
     #     nn.Conv2d(in_channels=512, out_channels=512, kernel_size=3, padding=1), nn.ReLU(), nn.Dropout2d(),
     #     nn.Upsample(scale_factor=2, mode='bilinear', align_corners=False),
     #
     #     nn.Conv2d(in_channels=512, out_channels=256, kernel_size=3, padding=1), nn.ReLU(), nn.Dropout2d(),
-    #     nn.Conv2d(in_channels=256, out_channels=256, kernel_size=3, padding=1), nn.ReLU(), nn.Dropout2d(),
-    #     nn.Conv2d(in_channels=256, out_channels=256, kernel_size=3, padding=1), nn.ReLU(), nn.Dropout2d(),
     #     nn.Upsample(scale_factor=2, mode='bilinear', align_corners=False),
     #
     #     nn.Conv2d(in_channels=256, out_channels=128, kernel_size=3, padding=1), nn.ReLU(), nn.Dropout2d(),
-    #     nn.Conv2d(in_channels=128, out_channels=128, kernel_size=3, padding=1), nn.ReLU(), nn.Dropout2d(),
-    #     nn.Conv2d(in_channels=128, out_channels=128, kernel_size=3, padding=1), nn.ReLU(), nn.Dropout2d(),
     #     nn.Upsample(scale_factor=2, mode='bilinear', align_corners=False),
     #
     #     nn.Conv2d(in_channels=128, out_channels=64, kernel_size=3, padding=1), nn.ReLU(), nn.Dropout2d(),
-    #     nn.Conv2d(in_channels=64, out_channels=64, kernel_size=3, padding=1), nn.ReLU(), nn.Dropout2d(),
     #     nn.Upsample(scale_factor=2, mode='bilinear', align_corners=False),
     #
     #     nn.Conv2d(in_channels=64, out_channels=64, kernel_size=3, padding=1), nn.ReLU(), nn.Dropout2d(),
-    #     nn.Conv2d(in_channels=64, out_channels=64, kernel_size=3, padding=1), nn.ReLU(), nn.Dropout2d(),
-    #
     #     nn.Conv2d(in_channels=64, out_channels=1, kernel_size=1, padding=0),
     # )
+  
+    self.sequential = nn.Sequential(
+        nn.Conv2d(in_channels=512, out_channels=512, kernel_size=3, padding=1), nn.ReLU(), nn.Dropout2d(),
+        nn.Conv2d(in_channels=512, out_channels=512, kernel_size=3, padding=1), nn.ReLU(), nn.Dropout2d(),
+        nn.Conv2d(in_channels=512, out_channels=512, kernel_size=3, padding=1), nn.ReLU(), nn.Dropout2d(),
+        nn.Upsample(scale_factor=2, mode='bilinear', align_corners=False),
+
+        nn.Conv2d(in_channels=512, out_channels=256, kernel_size=3, padding=1), nn.ReLU(), nn.Dropout2d(),
+        nn.Conv2d(in_channels=256, out_channels=256, kernel_size=3, padding=1), nn.ReLU(), nn.Dropout2d(),
+        nn.Conv2d(in_channels=256, out_channels=256, kernel_size=3, padding=1), nn.ReLU(), nn.Dropout2d(),
+        nn.Upsample(scale_factor=2, mode='bilinear', align_corners=False),
+
+        nn.Conv2d(in_channels=256, out_channels=128, kernel_size=3, padding=1), nn.ReLU(), nn.Dropout2d(),
+        nn.Conv2d(in_channels=128, out_channels=128, kernel_size=3, padding=1), nn.ReLU(), nn.Dropout2d(),
+        nn.Conv2d(in_channels=128, out_channels=128, kernel_size=3, padding=1), nn.ReLU(), nn.Dropout2d(),
+        nn.Upsample(scale_factor=2, mode='bilinear', align_corners=False),
+
+        nn.Conv2d(in_channels=128, out_channels=64, kernel_size=3, padding=1), nn.ReLU(), nn.Dropout2d(),
+        nn.Conv2d(in_channels=64, out_channels=64, kernel_size=3, padding=1), nn.ReLU(), nn.Dropout2d(),
+        nn.Upsample(scale_factor=2, mode='bilinear', align_corners=False),
+
+        nn.Conv2d(in_channels=64, out_channels=64, kernel_size=3, padding=1), nn.ReLU(), nn.Dropout2d(),
+        nn.Conv2d(in_channels=64, out_channels=64, kernel_size=3, padding=1), nn.ReLU(), nn.Dropout2d(),
+
+        nn.Conv2d(in_channels=64, out_channels=1, kernel_size=1, padding=0),
+    )
 
   def forward(self, xb):
     return self.sequential(xb)
