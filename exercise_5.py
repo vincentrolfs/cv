@@ -49,7 +49,8 @@ LEARNING_RATE = 0.0001
 WEIGHT_DECAY = 0
 LOSS_WEIGHT_ALPHA = 1.1 # Only used by WeightedMSELoss
 USE_DATA_AUGMENTATION = True
-AMOUNT_TRAINING_IMAGES = 3000 # Disregarding data augmentation
+AMOUNT_TRAINING_DATA = 10 # Disregarding data augmentation
+AMOUNT_VALIDATION_DATA = 10 # Disregarding data augmentation
 
 LOSS_BCE = "LOSS_BCE"
 LOSS_WEIGHTED_MSE = "LOSS_WEIGHTED_MSE"
@@ -135,8 +136,8 @@ fixation_paths[0], fixation_paths[33], fixation_paths[-1]
 
 len(image_paths), len(fixation_paths)
 
-image_paths_training, fixation_paths_training = image_paths[:AMOUNT_TRAINING_IMAGES], fixation_paths[:AMOUNT_TRAINING_IMAGES]
-image_paths_validation, fixation_paths_validation = image_paths[AMOUNT_TRAINING_IMAGES:], fixation_paths[AMOUNT_TRAINING_IMAGES:]
+image_paths_training, fixation_paths_training = image_paths[:AMOUNT_TRAINING_DATA], fixation_paths[:AMOUNT_TRAINING_DATA]
+image_paths_validation, fixation_paths_validation = image_paths[AMOUNT_TRAINING_DATA:AMOUNT_TRAINING_DATA+AMOUNT_VALIDATION_DATA], fixation_paths[AMOUNT_TRAINING_DATA:AMOUNT_TRAINING_DATA+AMOUNT_VALIDATION_DATA]
 
 len(image_paths_training), len(fixation_paths_training), len(image_paths_validation), len(fixation_paths_validation)
 
