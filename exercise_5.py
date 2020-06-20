@@ -49,8 +49,8 @@ LEARNING_RATE = 0.0001
 WEIGHT_DECAY = 0
 LOSS_WEIGHT_ALPHA = 1.1 # Only used by WeightedMSELoss
 USE_DATA_AUGMENTATION = True
-AMOUNT_TRAINING_DATA = 10 # Disregarding data augmentation
-AMOUNT_VALIDATION_DATA = 10 # Disregarding data augmentation
+AMOUNT_TRAINING_DATA = 3006 # Disregarding data augmentation
+AMOUNT_VALIDATION_DATA = 1128 # Disregarding data augmentation
 
 LOSS_BCE = "LOSS_BCE"
 LOSS_WEIGHTED_MSE = "LOSS_WEIGHTED_MSE"
