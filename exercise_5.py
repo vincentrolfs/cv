@@ -28,11 +28,9 @@ import pandas as pd
 
 import torch
 from torch import nn
-from torch.nn import functional
 from torch.utils.data import Dataset, DataLoader
 import torchvision
 
-from collections import OrderedDict
 import os
 from contextlib import contextmanager
 from IPython.display import clear_output
@@ -59,7 +57,7 @@ TRAINING_LOSS_CHOICE = LOSS_BCE
 
 TRAINING_STATUS_DISPLAY_INTERVAL = 5 # in seconds
 
-CHECKPOINT_FILE_FOLDER = 'drive/My Drive/Uni/SoSe20/Computer Vision 2/Exercise 5/checkpoints/'
+CHECKPOINT_FILE_FOLDER = 'checkpoints/'
 CHECKPOINT_FILE_PREFIX = 'checkpoint_'
 CHECKPOINT_FILE_POSTFIX = '.pth'
 TRAINING_DATA_FOLDER = 'training_data/'
