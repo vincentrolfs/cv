@@ -66,6 +66,8 @@ VALIDATION_DATA_FOLDER = 'validation_data/'
 
 MOODLE_SESSION = 'gu58lu5r7s5k3113i4d37chj56'
 
+os.makedirs(CHECKPOINT_FILE_FOLDER, exist_ok=True)
+
 """# Defining device"""
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
