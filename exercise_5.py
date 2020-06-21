@@ -638,8 +638,6 @@ display_validation_example(validation_indices_sorted[1])
 
 display_validation_example(validation_indices_sorted[2])
 
-display_validation_example(validation_indices_sorted[5])
-
 """## Negative examples"""
 
 display_validation_example(validation_indices_sorted[-1])
